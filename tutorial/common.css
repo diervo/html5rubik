@@ -1,0 +1,139 @@
+body {
+	max-width: 60em;
+	padding: 1em;
+	margin: auto;
+    background-image: url(http://subtlepatterns.com/patterns/grunge_wall.png);
+	font: 100%/1.5;
+	font-family: Georgia;
+	text-shadow: 0 1px white;
+}
+
+a{
+    background: #83786D;
+    padding: 2px 5px;
+-webkit-border-radius: 3px;
+    text-decoration:none;
+    color: white;
+    cursor: pointer;
+    
+}
+figure.crazy-me{
+	float:right;
+	background: url("../img/me-crazy-rubik.jpg") 50% no-repeat;
+	border: 1px solid black;
+	max-width:300px;
+	min-width:300px;
+	min-height:300px;
+	margin: 10px 20px;
+	border-radius: 10px;
+}
+header{
+	position:relative;
+
+}
+header hgroup{
+    cursor: pointer;
+    padding: 1.2em 4em;
+}
+ul{
+
+}
+li{
+	padding:5px;
+}
+
+header h1{
+    font-size: 500%;
+    font-family: 'Luckiest Guy', cursive;
+    padding: 0;
+    margin: 0;
+    line-height: 60%;
+    border-bottom: 1px solid black;
+	font-weight: bold;
+	text-shadow: rgba(0, 0, 0, .2) 3px 3px 3px;
+    color: #fff;
+	/*text stroke*/
+	-webkit-text-stroke: 4px rgba(0, 0, 0, .6);
+}
+header h2{
+    font-size: 70%;
+    line-height: 10px;
+}
+
+section p{
+	text-indent: 30px;
+}
+
+
+#example1{
+	border-radius:10px;
+	width:550px;
+	height:650px;
+	overflow: hidden;
+}
+
+#example2{
+	float:right;
+	border-radius:10px;
+	width:550px;
+	height:710px;
+	overflow: hidden;
+}
+
+
+#log{
+    position: absolute;
+    top: 0px;
+    width:220px;
+    height:60px;
+    right:34px;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    z-index:5000; 
+    line-height: 15px;
+    font-size: 20px;
+    text-align: right;
+}
+#log .twitter{
+    position:absolute;
+    left:8px;
+    top:6px;
+}
+#log .facebook{
+    position:absolute;
+    left:8px;
+    top:34px;
+}
+#log .html5{
+    position:absolute;
+    top:4px;
+    right:8px;
+    background: url("../img/h5.png") center 20% no-repeat,#ededed;
+    background-size:75%;
+    width:65px;
+    height:50px;
+    display:table;
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+    border:1px solid #dfdfdf;
+    opacity:0.9;
+}
+#log .html5:hover{
+background: url("../img/h5.png") center 20% no-repeat,#fff;
+}
+
+#log .html5 span{
+    width:100%;
+    font-family: Arial, "MS Trebuchet", serif;
+    font-size:14px;
+    font-weight:bold;
+    vertical-align:bottom;
+    text-align:center;
+    display:table-cell;
+    color:black;
+}

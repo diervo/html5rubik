@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5 Rukiks's tutorial Step(I)</title>
+<style>
+    body {padding: 4em;}
+    #control{position: absolute;top:500px;}
+    #control input[type="checkbox"]{width:20px;height:20px;}
+    #control input[type="range"]{
+    -webkit-appearance: textfield;
+    padding: 1px;
+    background-color: #333;
+    border: 2px inset;
+    cursor: auto;
+    height:15px;
+}
+</style>
+
+
+<style>
+/*CUBE 3D TRANSFORMATIONS*/
+
+#cube-container{
+    position:absolute;
+}
+
+#cube-viewport{
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+
+    -webkit-perspective-origin: 50% 200px;
+    -moz-perspective-origin: 50% 200px;
+}
+
+#cube{
+    opacity: 0.8;   
+    height: 400px;
+    width: 400px;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+        
+}
+#cube .cubie{
+    position:absolute;
+    margin: 1px;
+    border: 3px solid black;
+    border-radius: 15px;
+    width:  100px;
+    height: 100px;
+    z-index: -1;
+    text-align: center;
+    font-size:30px;    
+}
+
+#cube .cubie > div{
+    line-height: 100px;
+    border-radius: 8px;
+}
+#cube .cubie > div span{
+    opacity:0.6;
+    font-size:14px;
+}
+
+
+/* CUBIES POSITIONS*/
+
+/*UP FACE CUBIES*/
+.utl {
+    -webkit-transform:rotateX(90deg) translate3d(50px,-100px,0);
+    -moz-transform:rotateX(90deg) translate3d(50px,-100px,0);
+}
+.ucl {
+    -webkit-transform:rotateX(90deg) translate3d(50px,0,0);
+    -moz-transform:rotateX(90deg) translate3d(50px,0,0);
+}
+.ubl {
+    -webkit-transform:rotateX(90deg) translate3d(50px,100px,0px);
+    -moz-transform:rotateX(90deg) translate3d(50px,100px,0px);
+}
+.utc {
+    -webkit-transform:rotateX(90deg) translate3d(150px,-100px,0);
+    -moz-transform:rotateX(90deg) translate3d(150px,-100px,0);
+}
+.ucc {
+    -webkit-transform:rotateX(90deg) translate3d(150px,0,0);
+    -moz-transform:rotateX(90deg) translate3d(150px,0,0);
+}
+.ubc {
+    -webkit-transform:rotateX(90deg) translate3d(150px,100px,0);
+    -moz-transform:rotateX(90deg) translate3d(150px,100px,0);
+}
+.utr {
+    -webkit-transform:rotateX(90deg) translate3d(250px,-100px,0);
+    -moz-transform:rotateX(90deg) translate3d(250px,-100px,0);
+}
+.ucr {
+    -webkit-transform:rotateX(90deg) translate3d(250px,0,0);
+    -moz-transform:rotateX(90deg) translate3d(250px,0,0);
+}
+.ubr {
+    -webkit-transform:rotateX(90deg) translate3d(250px,100px,0);
+    -moz-transform:rotateX(90deg) translate3d(250px,100px,0);
+}
+
+/*FRONT FACE CUBIES*/
+.ftl {
+    -webkit-transform:translate3d(50px,50px,150px);
+    -moz-transform:translate3d(50px,50px,150px);
+}
+.fcl {
+    -webkit-transform:translate3d(50px,150px,150px);
+    -moz-transform:translate3d(50px,150px,150px);
+
+}
+.fbl {
+    -webkit-transform:translate3d(50px,250px,150px);
+    -moz-transform:translate3d(50px,250px,150px);
+}
+.ftc {
+    -webkit-transform:translate3d(150px,50px,150px);
+    -moz-transform:translate3d(150px,50px,150px);
+}
+.fcc {
+    -webkit-transform:translate3d(150px,150px,150px);
+    -moz-transform:translate3d(150px,150px,150px);
+}
+.fbc {
+    -webkit-transform:translate3d(150px,250px,150px);
+    -moz-transform:translate3d(150px,250px,150px);
+}
+.ftr {
+    -webkit-transform:translate3d(250px,50px,150px);
+    -moz-transform:translate3d(250px,50px,150px);
+}
+.fcr {
+    -webkit-transform:translate3d(250px,150px,150px);
+    -moz-transform:translate3d(250px,150px,150px);
+}
+.fbr {
+    -webkit-transform:translate3d(250px,250px,150px);
+    -moz-transform:translate3d(250px,250px,150px);
+}
+
+/*DOWN FACE CUBIES*/
+.dtl {
+    -webkit-transform:rotateX(-90deg) translate3d(50px,-100px,300px);
+    -moz-transform:rotateX(-90deg) translate3d(50px,-100px,300px);
+}
+.dcl {
+    -webkit-transform:rotateX(-90deg) translate3d(50px,0,300px);
+    -moz-transform:rotateX(-90deg) translate3d(50px,0,300px);
+}
+.dbl {
+    -webkit-transform:rotateX(-90deg) translate3d(50px,100px,300px);
+    -moz-transform:rotateX(-90deg) translate3d(50px,100px,300px);
+}
+.dtc {
+    -webkit-transform:rotateX(-90deg) translate3d(150px,-100px,300px);
+    -moz-transform:rotateX(-90deg) translate3d(150px,-100px,300px);
+}
+.dcc {
+    -webkit-transform:rotateX(-90deg) translate3d(150px,0px,300px);
+    -moz-transform:rotateX(-90deg) translate3d(150px,0px,300px);
+}
+.dbc {
+    -webkit-transform:rotateX(-90deg) translate3d(150px,100px,300px);
+    -moz-transform:rotateX(-90deg) translate3d(150px,100px,300px);
+}
+.dtr {
+    -webkit-transform:rotateX(-90deg) translate3d(250px,-100px,300px);
+    -moz-transform:rotateX(-90deg) translate3d(250px,-100px,300px);
+}
+.dcr {
+    -webkit-transform:rotateX(-90deg) translate3d(250px,0px,300px);
+    -moz-transform:rotateX(-90deg) translate3d(250px,0px,300px);
+}
+.dbr {
+    -webkit-transform:rotateX(-90deg) translate3d(250px,100px,300px);
+    -moz-transform:rotateX(-90deg) translate3d(250px,100px,300px);
+}
+
+/*BACK FACE CUBIES*/
+.btl {
+    -webkit-transform:rotateX(-180deg) translate3d(50px,-250px,150px);
+    -moz-transform:rotateX(-180deg) translate3d(50px,-250px,150px);
+}
+.bcl {
+    -webkit-transform:rotateX(-180deg) translate3d(50px,-150px,150px);
+    -moz-transform:rotateX(-180deg) translate3d(50px,-150px,150px);
+}
+.bbl {
+    -webkit-transform:rotateX(-180deg) translate3d(50px,-50px,150px);
+    -moz-transform:rotateX(-180deg) translate3d(50px,-50px,150px);
+}
+.btc {
+    -webkit-transform:rotateX(-180deg) translate3d(150px,-250px,150px);
+    -moz-transform:rotateX(-180deg) translate3d(150px,-250px,150px);
+}
+.bcc {
+    -webkit-transform:rotateX(-180deg) translate3d(150px,-150px,150px);
+    -moz-transform:rotateX(-180deg) translate3d(150px,-150px,150px);
+}
+.bbc {
+    -webkit-transform:rotateX(-180deg) translate3d(150px,-50px,150px);
+    -moz-transform:rotateX(-180deg) translate3d(150px,-50px,150px);
+}
+.btr {
+    -webkit-transform:rotateX(-180deg) translate3d(250px,-250px,150px);
+    -moz-transform:rotateX(-180deg) translate3d(250px,-250px,150px);
+}
+.bcr {
+    -webkit-transform:rotateX(-180deg) translate3d(250px,-150px,150px);
+    -moz-transform:rotateX(-180deg) translate3d(250px,-150px,150px)
+
+}
+.bbr {
+    -webkit-transform:rotateX(-180deg) translate3d(250px,-50px,150px);
+    -moz-transform:rotateX(-180deg) translate3d(250px,-50px,150px);
+}
+
+/*LEFT FACE CUBIES*/
+.ltl {
+    -webkit-transform:rotateY(-90deg) translate3d(-100px,50px,0px);
+    -moz-transform:rotateY(-90deg) translate3d(-100px,50px,0px);
+}
+.lcl {
+    -webkit-transform:rotateY(-90deg) translate3d(-100px,150px,0px);
+    -moz-transform:rotateY(-90deg) translate3d(-100px,150px,0px);
+}
+.lbl {
+    -webkit-transform:rotateY(-90deg) translate3d(-100px,250px,0px);
+    -moz-transform:rotateY(-90deg) translate3d(-100px,250px,0px);
+}
+.ltc {
+    -webkit-transform:rotateY(-90deg) translate3d(0px,50px,0px);
+    -moz-transform:rotateY(-90deg) translate3d(0px,50px,0px);
+}
+.lcc {
+    -webkit-transform:rotateY(-90deg) translate3d(0px,150px,0px);
+    -moz-transform:rotateY(-90deg) translate3d(0px,150px,0px);
+}
+.lbc {
+    -webkit-transform:rotateY(-90deg) translate3d(0px,250px,0px);
+    -moz-transform:rotateY(-90deg) translate3d(0px,250px,0px);
+}
+.ltr {
+    -webkit-transform:rotateY(-90deg) translate3d(100px,50px,0px);
+    -moz-transform:rotateY(-90deg) translate3d(100px,50px,0px);
+}
+.lcr {
+    -webkit-transform:rotateY(-90deg) translate3d(100px,150px,0px);
+    -moz-transform:rotateY(-90deg) translate3d(100px,150px,0px);
+}
+.lbr {
+    -webkit-transform:rotateY(-90deg) translate3d(100px,250px,0px);
+    -moz-transform:rotateY(-90deg) translate3d(100px,250px,0px);
+}
+
+/*RIGHT FACE CUBIES*/
+.rtl {
+    -webkit-transform:rotateY(90deg) translate3d(-100px,50px,300px);
+    -moz-transform:rotateY(90deg) translate3d(-100px,50px,300px);
+}
+.rcl {
+    -webkit-transform:rotateY(90deg) translate3d(-100px,150px,300px);
+    -moz-transform:rotateY(90deg) translate3d(-100px,150px,300px);
+}
+.rbl {
+    -webkit-transform:rotateY(90deg) translate3d(-100px,250px,300px);
+    -moz-transform:rotateY(90deg) translate3d(-100px,250px,300px);
+}
+.rtc {
+    -webkit-transform:rotateY(90deg) translate3d(0px,50px,300px);
+    -moz-transform:rotateY(90deg) translate3d(0px,50px,300px);;
+}
+.rcc {
+    -webkit-transform:rotateY(90deg) translate3d(0px,150px,300px);
+    -moz-transform:rotateY(90deg) translate3d(0px,150px,300px);
+}
+.rbc {
+    -webkit-transform:rotateY(90deg) translate3d(0px,250px,300px);
+    -moz-transform:rotateY(90deg) translate3d(0px,250px,300px);
+}
+.rtr {
+    -webkit-transform:rotateY(90deg) translate3d(100px,50px,300px);
+    -moz-transform:rotateY(90deg) translate3d(100px,50px,300px);
+}
+.rcr {
+    -webkit-transform:rotateY(90deg) translate3d(100px,150px,300px);
+    -moz-transform:rotateY(90deg) translate3d(100px,150px,300px);
+}
+.rbr {
+    -webkit-transform:rotateY(90deg) translate3d(100px,250px,300px);
+    -moz-transform:rotateY(90deg) translate3d(100px,250px,300px);
+}
+
+</style>
+
+
+</head>
+<body>
+<section id="rubik">
+<div id="cube-container">
+    <div id="cube-viewport">
+        <div id="cube" style="-webkit-transform: rotateX(0deg) rotateY(130deg)">
+        <!-- UP FACE -->            
+            <!-- LEFT COLUMN (L)  -->                
+            <div class="utl cubie"><div><span>U1</span></div></div> 
+            <div class="ucl cubie"><div><span>U2</span></div></div>
+            <div class="ubl cubie"><div><span>U3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->            
+            <div class="utc cubie"><div><span>U4</span></div></div>
+            <div class="ucc cubie"><div><span>U5</span></div></div>
+            <div class="ubc cubie"><div><span>U6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->
+            <div class="utr cubie"><div><span>U7</span></div></div>
+            <div class="ucr cubie"><div><span>U8</span></div></div>
+            <div class="ubr cubie"><div><span>U9</span></div></div>
+        <!-- END UP FACE -->  
+
+        <!-- FRONT FACE -->
+            <!-- LEFT COLUMN (L)  -->                
+            <div class="ftl cubie"><div><span>F1</span></div></div>
+            <div class="fcl cubie"><div><span>F2</span></div></div>
+            <div class="fbl cubie"><div><span>F3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->            
+            <div class="ftc cubie"><div><span>F4</span></div></div>
+            <div class="fcc cubie"><div><span>F5</span></div></div>
+            <div class="fbc cubie"><div><span>F6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->
+            <div class="ftr cubie"><div><span>F7</span></div></div>
+            <div class="fcr cubie"><div><span>F8</span></div></div>
+            <div class="fbr cubie"><div><span>F9</span></div></div>
+        <!-- END FRONT FACE -->
+        
+        <!--DOWN FACE -->
+            <!-- LEFT COLUMN (L)  -->                
+            <div class="dtl cubie"><div><span>D1</span></div></div>
+            <div class="dcl cubie"><div><span>D2</span></div></div>
+            <div class="dbl cubie"><div><span>D3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->                
+            <div class="dtc cubie"><div><span>D4</span></div></div>
+            <div class="dcc cubie"><div><span>D5</span></div></div>
+            <div class="dbc cubie"><div><span>D6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->        
+            <div class="dtr cubie"><div><span>D7</span></div></div>
+            <div class="dcr cubie"><div><span>D8</span></div></div>
+            <div class="dbr cubie"><div><span>D9</span></div></div>
+        <!-- END DOWN FACE -->
+        
+        <!--BACK FACE -->    
+            <!-- LEFT COLUMN (L)  -->           
+            <div class="btl cubie"><div><span>B1</span></div></div>
+            <div class="bcl cubie"><div><span>B2</span></div></div>
+            <div class="bbl cubie"><div><span>B3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->           
+            <div class="btc cubie"><div><span>B4</span></div></div>
+            <div class="bcc cubie"><div><span>B5</span></div></div>
+            <div class="bbc cubie"><div><span>B6</span></div></div> 
+            <!-- RIGHT COLUMN (R)  -->    
+            <div class="btr cubie"><div><span>B7</span></div></div>
+            <div class="bcr cubie"><div><span>B8</span></div></div>
+            <div class="bbr cubie"><div><span>B9</span></div></div> 
+        <!--END BOTTOM FACE --> 
+        
+        <!--LEFT FACE -->
+            <!-- LEFT COLUMN (L)  -->           
+            <div class="ltl cubie"><div><span>L1</span></div></div>
+            <div class="lcl cubie"><div><span>L2</span></div></div>
+            <div class="lbl cubie"><div><span>L3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->  
+            <div class="ltc cubie"><div><span>L4</span></div></div>
+            <div class="lcc cubie"><div><span>L5</span></div></div>
+            <div class="lbc cubie"><div><span>L6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->    
+            <div class="ltr cubie"><div><span>L7</span></div></div>
+            <div class="lcr cubie"><div><span>L8</span></div></div>
+            <div class="lbr cubie"><div><span>L9</span></div></div>
+        <!--END LEFT FACE -->   
+        
+        <!--RIGHT FACE -->
+            <!-- LEFT COLUMN (L)  -->           
+            <div class="rtl cubie"><div><span>R1</span></div></div>
+            <div class="rcl cubie"><div><span>R2</span></div></div>
+            <div class="rbl cubie"><div><span>R3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->  
+            <div class="rtc cubie"><div><span>R4</span></div></div>
+            <div class="rcc cubie"><div><span>R5</span></div></div>
+            <div class="rbc cubie"><div><span>R6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->    
+            <div class="rtr cubie"><div><span>R7</span></div></div>
+            <div class="rcr cubie"><div><span>R8</span></div></div>
+            <div class="rbr cubie"><div><span>R9</span></div></div>
+        <!--END LEFT FACE -->  
+              
+         </div>
+    </div>
+</div>  
+</section>
+
+
+<!-- CONTROLS -->
+<section id="control">
+    <p>X: <input id="rx" type="range" max="360" min="0" value="0" onchange="rotate()"></p>
+    <p>Y: <input id="ry" type="range" max="360" min="0" value="130" onchange="rotate()"></p>
+    <p>Plane: <input id="plane" type="checkbox" onclick="showPlane(this)"></p>
+    <script>
+     document.querySelector('#cube').addEventListener("mousemove", mouseOver, false);
+       function mouseOver(e){
+        var x = e.pageX * 0.2,
+            y = e.pageY * 0.2;
+        rotate(x,y);
+        }
+        function showPlane(c){
+            document.querySelector('#cube').style.background = c.checked ? '#CCC': '';
+        }
+        function rotate(newX,newY){
+            var x = parseInt(document.querySelector('#rx').value,10) + (newX || 0),
+                y = parseInt(document.querySelector('#ry').value,10) + (newY || 0),
+            cube = document.getElementById('cube');
+
+            cube.style.webkitTransform = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
+            cube.style.MozTransform = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
+            //cube.style.transform = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
+        }
+    </script>
+</section>
+
+</body>
+</html>

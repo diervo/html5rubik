@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name = "viewport" content = "user-scalable=no">
+    <title>HTML5 Rubik's cube (CSS3 + JS)</title>
+    <link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css"></link>  
+    <link rel="stylesheet" href="rubik.css"></link>  
+    <script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
+    <script src="rubik.js"></script>
+    <script src="message-scroll.js"></script>
+<script>
+YUI().use('node','rubik','message-scroll',function(Y){
+    var scrollpanel = new Y.MessageScroll();
+    var cube = window.cube = new Y.Rubik();
+    cube.run();    
+});
+</script>
+</head>
+<body>
+<header>
+    <hgroup>
+        <h1>Rubik's</h1>
+        <h2><a href="//www.rubiks.com">Rubik's Cube</a> &#174; 
+            used by permission of Seven Towns Limited.
+        </h2>
+    </hgroup>
+</header>
+
+<section id="log">
+    <div class= "twitter">
+    <a  href="https://twitter.com/share" 
+        class="twitter-share-button" 
+        data-url="http://html5rubik.com" data-size="small" data-hashtags="html5rubik">
+        Twitt!
+    </a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+
+<div class="facebook"><iframe  src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhtml5rubik.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+</div>
+<a href="tutorial">
+<div class="html5">
+    <span href="/tutorial">Tutorial</span>
+</div>
+</a>
+
+
+</section>
+
+<section id="tutorial">
+    <p><span>Move</span> your device to trigger the accelerometers and rotate the cube. 
+        Use <span>flick</span> gestures to move the faces. 
+    <span>Rotate</span> your device to start the <span class="yellow">landscape</span> application. Have fun!</p>
+</section>
+
+<section id="messages">
+<div class="wrapper">
+    <ul class="active">
+        <li class="prev"></li>
+        <li class="current"></li>
+        <li class="next"></li>
+    </ul>
+
+    <div class="populate">
+        <div class="panel" data-pos="0">
+            <hgroup>
+                <h1>Welcome to the HTML5 Rubik's page!</h1>
+                <h2><u>Swipe left</u> your finger over the panel to get into the next pages</h2>
+            </hgroup>
+        </div>
+
+        <div class="panel" data-pos="1">
+            <hgroup>
+                <h1>Let's see how to play with the cube...</h1>
+                <h2>Don't forget to give it a try in you tablet or your phone!</h2>
+
+            </hgroup>
+        </div>
+
+        <div class="panel" data-pos="2">
+            <hgroup>
+                <h1>Movements and rotation</h1>
+                <h2>Flick over the cube to do the movements. 
+                    Push with two fingers on the screen (or use the orange button) to rotate the cube.
+                </h2>
+        </hgroup>
+        </div>
+        <div class="panel" data-pos="3">
+            <hgroup>
+                <h1>Solving the cube</h1>
+                <h2>Tap in the rubik's button to solve the cube. Note that the real algorithm is not implemented yet so if just going to be a multiple undo.
+                </h2>
+            </hgroup>
+        </div>
+
+        <div class="panel" data-pos="4">
+           <hgroup>
+                <h1>Cube history</h1>
+                <h2>Press the undo or redo blue  arrow buttons 
+                    to go back and forward off the rubik's movement</h2>
+        </hgroup>
+        </div>
+        <div class="panel" data-pos="5">
+           <hgroup>
+                <h1>Rubik's CSS3+JS Tutorial</h1>
+                <h2>
+                    Don't forget to check the <a href="/tutorial">tutorial</a> of how the cube was made!
+                </h2>
+        </hgroup>
+        </div>
+        <div class="panel" data-pos="6">
+           <hgroup>
+                <h1>Code at Github</h1>
+                <h2>
+                    Any contribution will be welcome in the <a href="//github.com/dferreiroval">github</a> account
+                </h2>
+        </hgroup>
+        </div>
+        <div class="panel" data-pos="7">
+           <hgroup>
+                <h1>Feedback</h1>
+                <h2>
+                    Feel free to send me your feedback via 
+                    <a href="mailto:feedback@html5rubik.com">mail</a> or 
+                    <a href="//twitter.com/#!/diervo">twitter!</a>
+                </h2>
+        </hgroup>
+        </div>
+        <div class="panel" data-pos="8">
+           <hgroup>
+                <h1>Have fun!</h1>
+                <h2>
+                    For more projects visit my home page:
+                    <a href="//feval.info">feval.info</a> or 
+                    <a href="//twitter.com/#!/diervo">@diervo</a>
+                </h2>
+        </hgroup>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="rubik">
+<div id="cube-container">
+    <div id="cube-viewport">
+        <div id="cube">
+        <!-- UP FACE -->            
+            <!-- LEFT COLUMN (L)  -->                
+            <div class="utl cubie up LM UE BS"><div><span>U1</span></div></div> 
+            <div class="ucl cubie up LM UE CS"><div><span>U2</span></div></div>
+            <div class="ubl cubie up LM UE FS"><div><span>U3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->            
+            <div class="utc cubie up CM UE BS"><div><span>U4</span></div></div>
+            <div class="ucc cubie up CM UE CS"><div><span>U5</span></div></div>
+            <div class="ubc cubie up CM UE FS"><div><span>U6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->
+            <div class="utr cubie up RM UE BS"><div><span>U7</span></div></div>
+            <div class="ucr cubie up RM UE CS"><div><span>U8</span></div></div>
+            <div class="ubr cubie up RM UE FS"><div><span>U9</span></div></div>
+        <!-- END UP FACE -->  
+
+        <!-- FRONT FACE -->
+            <!-- LEFT COLUMN (L)  -->                
+            <div class="ftl cubie front LM UE FS"><div><span>F1</span></div></div>
+            <div class="fcl cubie front LM CE FS"><div><span>F2</span></div></div>
+            <div class="fbl cubie front LM DE FS"><div><span>F3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->            
+            <div class="ftc cubie front CM UE FS"><div><span>F4</span></div></div>
+            <div class="fcc cubie front CM CE FS"><div><span>F5</span></div></div>
+            <div class="fbc cubie front CM DE FS"><div><span>F6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->
+            <div class="ftr cubie front RM UE FS"><div><span>F7</span></div></div>
+            <div class="fcr cubie front RM CE FS"><div><span>F8</span></div></div>
+            <div class="fbr cubie front RM DE FS"><div><span>F9</span></div></div>
+        <!-- END FRONT FACE -->
+        
+        <!--DOWN FACE -->
+            <!-- LEFT COLUMN (L)  -->                
+            <div class="dtl cubie down LM DE FS"><div><span>D1</span></div></div>
+            <div class="dcl cubie down LM DE CS"><div><span>D2</span></div></div>
+            <div class="dbl cubie down LM DE BS"><div><span>D3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->                
+            <div class="dtc cubie down CM DE FS"><div><span>D4</span></div></div>
+            <div class="dcc cubie down CM DE CS"><div><span>D5</span></div></div>
+            <div class="dbc cubie down CM DE BS"><div><span>D6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->        
+            <div class="dtr cubie down RM DE FS"><div><span>D7</span></div></div>
+            <div class="dcr cubie down RM DE CS"><div><span>D8</span></div></div>
+            <div class="dbr cubie down RM DE BS"><div><span>D9</span></div></div>
+        <!-- END DOWN FACE -->
+        
+        <!--BACK FACE -->    
+            <!-- LEFT COLUMN (L)  -->           
+            <div class="btl cubie back LM DE BS"><div><span>B1</span></div></div>
+            <div class="bcl cubie back LM CE BS"><div><span>B2</span></div></div>
+            <div class="bbl cubie back LM UE BS"><div><span>B3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->           
+            <div class="btc cubie back CM DE BS"><div><span>B4</span></div></div>
+            <div class="bcc cubie back CM CE BS"><div><span>B5</span></div></div>
+            <div class="bbc cubie back CM UE BS"><div><span>B6</span></div></div> 
+            <!-- RIGHT COLUMN (R)  -->    
+            <div class="btr cubie back RM DE BS"><div><span>B7</span></div></div>
+            <div class="bcr cubie back RM CE BS"><div><span>B8</span></div></div>
+            <div class="bbr cubie back RM UE BS"><div><span>B9</span></div></div> 
+        <!--END BOTTOM FACE --> 
+        
+        <!--LEFT FACE -->
+            <!-- LEFT COLUMN (L)  -->           
+            <div class="ltl cubie left LM UE BS"><div><span>L1</span></div></div>
+            <div class="lcl cubie left LM CE BS"><div><span>L2</span></div></div>
+            <div class="lbl cubie left LM DE BS"><div><span>L3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->  
+            <div class="ltc cubie left LM UE CS"><div><span>L4</span></div></div>
+            <div class="lcc cubie left LM CE CS"><div><span>L5</span></div></div>
+            <div class="lbc cubie left LM DE CS"><div><span>L6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->    
+            <div class="ltr cubie left LM UE FS"><div><span>L7</span></div></div>
+            <div class="lcr cubie left LM CE FS"><div><span>L8</span></div></div>
+            <div class="lbr cubie left LM DE FS"><div><span>L9</span></div></div>
+        <!--END LEFT FACE -->   
+        
+        <!--RIGHT FACE -->
+            <!-- LEFT COLUMN (L)  -->           
+            <div class="rtl cubie right RM UE FS"><div><span>R1</span></div></div>
+            <div class="rcl cubie right RM CE FS"><div><span>R2</span></div></div>
+            <div class="rbl cubie right RM DE FS"><div><span>R3</span></div></div>
+            <!-- CENTER COLUMN (C)  -->  
+            <div class="rtc cubie right RM UE CS"><div><span>R4</span></div></div>
+            <div class="rcc cubie right RM CE CS"><div><span>R5</span></div></div>
+            <div class="rbc cubie right RM DE CS"><div><span>R6</span></div></div>
+            <!-- RIGHT COLUMN (R)  -->    
+            <div class="rtr cubie right RM UE BS"><div><span>R7</span></div></div>
+            <div class="rcr cubie right RM CE BS"><div><span>R8</span></div></div>
+            <div class="rbr cubie right RM DE BS"><div><span>R9</span></div></div>
+        <!--END LEFT FACE -->  
+              
+         </div>
+    </div>
+</div>  
+
+<aside>
+    <section id="main">
+        <div id="cube-controls">
+            <ul>
+                <li class="undo"></li>
+                <li class="redo"></li>
+                <li class="solve"></li>
+                <li id="rotation" class="rotate"></li>
+            </ul>
+        </div>   
+    </section>
+</aside>
+</section>
+
+</body>
+
+</html>

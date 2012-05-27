@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="common.css"/>
+    <title>HTML5 Rubik's cube (CSS3 + JS) - Tutorial</title>
+    <!-- Syntax Highighter includes -->
+    <link href="sh/styles/shCoreDefault.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="sh/scripts/shCore.js"></script>
+    <script type="text/javascript" src="sh/scripts/shBrushJScript.js"></script> 
+    <script type="text/javascript" src="sh/scripts/shBrushCss.js"></script> 
+    <style>
+        body{
+            background-image: url(//subtlepatterns.com/patterns/grunge_wall.png); 
+        }
+        #tutorial h1{
+            font-family: Helvetica, sans-serif;
+            text-align:center;
+            font-size:180%;
+        }
+        h3{
+            font-family: Helvetica, sans-serif;
+            margin:40px 0;
+        }
+        p{
+            line-height:20px;
+        }
+        #tutorial{
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+            pre{ 
+                width:60%;
+            }
+            .src-code{
+                padding:8px !important;
+                border-radius:5px;
+            }
+        footer{
+            text-align:right;
+        }
+        footer p {
+            line-height:8px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <hgroup>
+        <h1>Rubik's</h1>
+        <h2><a href="http://www.rubiks.com">Rubik's Cube</a> &#174; used by permission of Seven Towns Limited.</h2>
+    </hgroup>
+
+<section id="log">
+    <div class= "twitter">
+    <a  href="https://twitter.com/share" 
+        class="twitter-share-button" 
+        data-url="http://html5rubik.com" data-size="small" data-hashtags="html5rubik">
+        Twitt!
+    </a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+
+<div class="facebook"><iframe  src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhtml5rubik.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+</div>
+<a href="/">
+<div class="html5">
+    <span>Rubik's</span>
+</div>
+</a>
+
+
+</section>
+
+</header>
+
+<section id="tutorial">
+    <h1>
+        Tutorial: Rubik's cube with HTML5 (CSS3 + JavaScript)
+    </h1>
+
+    <p>: <a href="#motivation">Motivation</a> : 
+         <a href="#perspective3D">Perspective3D</a> : 
+         <a href="#modeling">Modeling the cube</a> : 
+         <a href="#movements">The movements</a> : 
+         <a href="#rotation">Rotation</a> : 
+         <a href="#javascript">JavaScript cross-platform</a> :
+    </p>
+
+    <h3>Introduction</h3>
+
+    <p>This webpage was built entirely using only HTML5, basically CSS3 and JavaScript
+        (with the power of <a href="http://yuilibrary.com/">YUI</a> Library).  With this project, I wanted to show using a real and interesting example, how we can combine the power of CSS3 3D transforms, with some of the new features and API's that HTML5 provides. </p>
+
+    <p>You can find the code under my <a href="//github.com/dferreiroval/html5rubik">Github</a> user. Feel free to fork, pull, comment or whatever other things you like!</p>
+
+    <h3>Motivation</h3>
+    <figure class="crazy-me"></figure>
+    <p>This part is non-tecnical stuff, so you can skip it if you like ;)</p>
+    <p>
+        I've decided to create this webpage after my girlfriend's sister challenged me to solve a Sudoku Rubik's cube. I knew more less how to solve the original one, so I thought that would be an easy task... Far from being truth! After trying a couple of hours, I realize that I was missing an important part: What exactly was happening in every move, or with another words, what was the algorithm like behind that puzzle.
+
+<p>After some research I find out, that most of the websites were really old (with a really ugly UI), and the instructions to solve the cube weren't intuitive at all. So I give up trying to understand those complicated notations, and instead I started to watch some videos to see real examples on how to solve it instead. </p>
+
+<p>Then, I realized that it would be awesome to create a 3D Rubik's cube, where I can go step by step seeing which is the movement to do, and what exactly was going on in every step. And of course, why not doing it in HTML5!!</p>
+
+    <h3 id="perspective3D">Step 1: Perpective 3D</h3>
+
+    <p>The first thing I needed to do is to create the cube model in 3D. I had a couple of choices there using some HTML5 features: WebGL, Canvas... But there was already many HTML5 examples using those technologies. So then I realized that CSS3 and 3D Transforms, could be an awesome way to solve my problem, and more than that, I could create something new (almost no good examples taking fully advantage with the 3D in CSS).
+    </p>
+    <p>
+        So after checking some docs <a href="http://www.w3.org/TR/css3-2d-transforms/#transform-property">here</a> and <a href="https://developer.mozilla.org/en/CSS/transform-function">there</a>, to get my mind fresh with the 3D perspectives and transformation usages, I started to mock up the cube. An important note here before start, is that <a href="http://caniuse.com/#feat=transforms3d"> not all browsers</a> have support for 3D transformations yet. So temporarily, I focused in get it working on Webkit browsers (since I wanted to get the Rubik working on iOS devices), but soon will be compatible in almost all new browsers.
+    </p>
+
+    <p>
+        The first thing we need to do is tell the browser we want to render 3D elements, and second we want to specify how, or from where those elements will be represented (the perspective):
+    </p>
+
+<pre>
+    <code class="brush:css">    
+    #cube-viewport{
+        -webkit-perspective: 800;
+        -webkit-perspective-origin: 50% 200px;    
+    }
+
+    #cube{
+        position: relative;
+        height: 400px;
+        width: 400px;
+        -webkit-transform-style: preserve-3d;
+    }
+    </code>
+</pre>
+
+<p>
+    You can think about perspective like if we had a camera, from where we want to record our elements.
+    Note also that <i>#cube</i> will be a child of <i>#cube-viewport</i> 
+</p>
+
+<h3 id="modeling">Step 2: Modeling the cube</h3>
+<p>Now, let's start drawing our cube!</p> 
+
+    <p>Our rubik is made of little cubes called "cubies". Every face of the cube contains nine cubies, and those cubies will change their position regarding some move, but we will go there later.
+</p>
+
+<p>
+    Every cubie will have a css class, which will map where on the space each <i>cubie</i> will be positioned.
+</p>
+
+ <code class="brush:css">    
+    /* utl matched the cubie on the up face, on the top left */
+    .utl {-webkit-transform:rotateX(90deg) translate3d(50px,-100px,0)} 
+    /* utl matched the cubie on the up layer on the top center */
+    .ucl {-webkit-transform:rotateX(90deg) translate3d(50px,0,0)} 
+    /* utl matched the cubie on the up layer on the center right */
+    .ucr {-webkit-transform:rotateX(90deg) translate3d(250px,0,0)}
+    /*back face top left*/
+    .btl {-webkit-transform:rotateX(-180deg) translate3d(50px,-250px,150px)}
+    ...
+</code>
+<p>
+    If you do the maths, I had to create 6 * 9 class in total and position each of them in the proper 3d coordinates, which was a pain in the ass, but at least I just had to do it once :). Regarding CSS style, I could also use <a href="https://developer.mozilla.org/en/CSS/transform-function#matrix3d()">matrix3d</a> property which allows me to do the same thing, but more compressed and pretty. Also, for simplicity I used fixed dimensions, but another possibility (more flexible) would be create the styles on the fly via JavaScript.
+</p>
+
+<p>
+    Moreover, in order to rotate the cube we will use some dynamic CSS styling via JavaScript, just adding the rotations degrees of X and Y:
+</p>
+    <pre>
+    <code class="brush:js">    
+        cube.style.webkitTransform = 
+        "rotateX(" + x + "deg) rotateY(" + y + "deg)";
+    </code>
+</pre>
+
+<p>
+    It is important also to mention that the coordinates are symmetrical to a centered plane, if not, when  we rotate the cube, the center will be unaligned (you can see how it looks in example1).
+</p>
+
+<h4><a href="step1/index.html">#Example1</a> This is what I get complete after the first steps:</h4>
+
+<iframe id="example1" src="step1/index.html" scrolling="no" frameBorder="false"></iframe>
+
+<p>
+    I encourage you to check the source code of <i>#example1</i> since is really clean and understandable.
+</p>
+
+
+<h3 id="movements">Step3: The movements</h3>
+<p>Here it's where the fun begins! :)</p>
+<p>
+    Let's define first the possible movements we can do with our cube. There are couple nomenclatures for the moves, I'm going to use one based on the types of moves and faces (better for future algorithms), but we will try to map also with the traditional one (For example: LM maps with just L move).
+
+</p>
+<iframe id="example2" src="step2/index.html" scrolling="no" frameBorder="false"></iframe>
+<p>
+    So there are three possible movements, and each of those apply also in three slices on the cube,
+    you can check the <i>example2</i> to make sure you understand the moves:
+    <ul>
+        <li>
+            "M" Moves (Left "L" or Right "R" face moves)
+            <ul>
+                <li>LM: M in LEFT side</li>
+                <li>CM: M in CENTER side</li>
+                <li>RM: M in RIGHT side</li>
+            </ul>
+        </li>
+        <li>
+            "S" Moves (Front "F" or Back "B" face moves)
+            <ul>
+                <li>FS: S in FRONT side</li>
+                <li>CS: S in CENTER side</li>
+                <li>BS: S in BACK side</li>
+            </ul>
+        </li>
+        <li>
+            "E" Moves (Up "U" or Down "D" face moves)
+            <ul>
+                <li>UE: E in UP side</li>
+                <li>CE: E in CENTER side</li>
+                <li>DE: E DOWN side</li>
+            </ul>
+        </li>
+    </ul>
+</p>
+
+<p>If you check the source code of <a href="step2/index.html">#example2</a> (the cube next to this text), you will see that at the end of the day, each cubie belongs to three different movements.</p>
+<p> For example: The cubie "F1", will have to rotate when we move the cube on: <i>LM, UE and FS</i>, no matter which direction (clockwise or anticlockwise) </p>
+
+<p>
+    We conclude that every cubie "belongs" to three totally different moves, which means that it could be translated along three different planes, so we cannot create any kind of nesting or hierarchy in the DOM. I mean, imagine we want to rotate in FS (front face) to the right, and after that DE (down face) to the right as well. F1 should first rotate to be in the Down face and the rotate again.
+</p>
+<p>
+     How are we going to manage that? We will see it in the next chapter! :)
+</p>
+
+<h3 id="rotation">Step4: Rotation</h3>
+
+<p> 
+    As I showed you before, every cube can be repositioned using three different moves, that's what it makes our job a bit more complicated. Why exactly? 
+</p>
+<p>
+Imaging that we want to do two rotations:  First rotate the left side (ML) clockwise and second rotate the down side (DE) clockwise as well.
+    Let's just focus to what happen in a single cubie, for example F1 which is on the front face, top left (ftl).
+</p>
+<p>
+    After executing the first move (ML), the cubie "F1" changed from the front face, top left position 
+    (ftl), to the down face, top left (dtl). The mapping is in this case: <strong>(ML-right: "ftl" => "dtl").</strong>
+</p>
+<p>
+    After executing the second move (DE) the cubie F1 which was in dtl, it went to the down face  on the bottom left position (dbl). The mapping rule here:  <strong>(DE-right: "dtl" => "dbl").</strong>
+</p>
+<p>
+    Don't worry if you get lost with all this names, and movements, you can check exactly what I meant in the <a href="step3/index.html">#example3</a>, but first, let's keep going with the rotation.
+</p>
+
+<p>
+    Now, how to know which cubies are involved in a particular move and how to move them if there is no common parent for all of them? Easy! Create a container plane dynamically which will contain all cubies involved in the move being triggered. We have every cubie identified with the movements/planes to which that cubie belongs.
+</p>
+    <pre>
+    <code class="brush:js"> 
+        // Creating a move here, 
+        // but we should receive it from somewhere else...
+        var move = {
+            face: 'F',
+            plane: 'S',
+            rotation: 'right'
+        };
+        //got the cubies with that move (FS)
+        list = Y.all('.' + move.face + move.plane);
+    </code>
+</pre>
+<p>
+    Once we get all the cubies that belongs to that particular move we will rotate the new populated plane according to the given move. I did that creating a css class selectors which will tell the plane how to rotate, also we provide the movement speed and ease function:
+</p>
+
+    <code class="brush:css">    
+        /* PLANES & ROTATIONS */
+
+        #plane{
+            -webkit-transform-style: preserve-3d;
+        }
+        /* Set speed and move function */
+        .moving {
+            -webkit-transition:all .2s linear;
+        }
+
+        /* PLANE M */
+        /* Transform the origin to get the point of rotation centered */
+        
+        .M-left {
+            -webkit-transform-origin: 0px 200px;
+            -webkit-transform:rotateX(90deg);
+        }
+        .M-right {
+            -webkit-transform-origin: 0px 200px;
+            -webkit-transform:rotateX(-90deg)
+        }
+
+        /* PLANE E */
+
+        .E-right {-webkit-transform:rotateY(90deg)}
+        .E-left {-webkit-transform:rotateY(-90deg)}
+
+        /* PLANE S */
+        /* Transform the origin to get the point of rotation centered */
+
+        .S-left {
+            -webkit-transform-origin: 200px 200px;
+            -webkit-transform:rotateZ(-90deg);
+        }
+        .S-right {
+            -webkit-transform-origin: 200px 200px;
+            -webkit-transform:rotateZ(90deg);
+        }
+    </code>
+
+    <p>
+        Once the the move transition is over, we have to reorganize the cubies. The reason of this is because as we saw on the <i>example2</i> the cubie itself has the class which indicates it's position, and now, it's position has change. Going to the previous example move: Cubie F1 has the class "ftl" when it starts, but after applying the move "ML-right" (left side right), it should be in the position "dtl".
+        How to do this nicely? Well I didnt find any, I had to hardcode the mapping between the cubies position and the moves (I would be happy to hear more solutions to this! :P ).
+    </p>
+
+    <code class="brush:js">
+        var CUBIE_MOVEMENTS = {
+        'LM-left':{
+            "utl":"btl","ucl":"bcl","ubl":"bbl","ftl":"utl","fcl":"ucl","fbl":"ubl","dtl":"ftl",
+            "dcl":"fcl","dbl":"fbl","btl":"dtl","bcl":"dcl","bbl":"dbl","ltl":"lbl","lcl":"lbc",
+            "lbl":"lbr","ltc":"lcl","lbc":"lcr","ltr":"ltl","lcr":"ltc","lbr":"ltr","lcc":"lcc"
+        },
+        "LM-right":{
+            "utl":"ftl","ucl":"fcl","ubl":"fbl","ftl":"dtl","fcl":"dcl","fbl":"dbl","dtl":"btl",
+            "dcl":"bcl","dbl":"bbl","btl":"utl","bcl":"ucl","bbl":"ubl","ltl":"ltr","lcl":"ltc",
+            "lbl":"ltl","ltc":"lcr","lbc":"lcl","ltr":"lbr","lcr":"lbc","lbr":"lbl","lcc":"lcc"
+        },
+        'RM-right':{
+            "utr":"ftr","ucr":"fcr","ubr":"fbr","ftr":"dtr","fcr":"dcr","fbr":"dbr","dtr":"btr",
+            "dcr":"bcr","dbr":"bbr","btr":"utr","bcr":"ucr","bbr":"ubr","rtl":"rbl","rcl":"rbc",
+            "rbl":"rbr","rtc":"rcl","rcc":"rcc","rbc":"rcr","rtr":"rtl","rcr":"rtc","rbr":"rtr"
+        },
+        'RM-left':{
+            "utr":"btr","ucr":"bcr","ubr":"bbr","ftr":"utr","fcr":"ucr","fbr":"ubr","dtr":"ftr",
+            "dcr":"fcr","dbr":"fbr","btr":"dtr","bcr":"dcr","bbr":"dbr","rtl":"rtr","rcl":"rtc",
+            "rbl":"rtl","rtc":"rcr","rbc":"rcl","rtr":"rbr","rcr":"rbc","rbr":"rbl","rcc":"rcc"
+        },
+        ...
+    </code>
+
+     <p>
+        And finally after this painful exercise, and after creating the function to reorganize the cubies based on that mapping, 
+        you will get the <a href="step3/index.html">#example3</a> up and running:
+    </p>
+
+    <iframe id="example3" src="step3/index.html" scrolling="no" frameBorder="false" width="600px" height="680px"></iframe>
+
+    <p>Depending on your browser and in you hardware acceleration you may get a better transition effect. Some test I did using different computers/browsers show little problems when the transition is going on. If someone has any optimization I would be happy to hear!. Anyway in iOS devices the performance is dame impressive!</p>
+
+    <p>Also you may notice that when the transition ends, there is kind of weird reorganization/flush on the cube. 
+        That's because as I explained you before, we are doing a reorganization of DOM nodes, where we are grouping in a container some cubies together to do the rotation, and when it finishes, we unpopulate that container and put the nodes back in the original place. When you do this kind of manipulation in the DOM, the browser has to re-render( specifically <a href="http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/">repaint and reflow</a> ) the content. Again I couldn't polish it more there... :)
+    </p>
+
+<h3 id="javascript"> Step5: JavaScript cross-platform</h3>
+    <p>
+        As you may know, when you're writing a complex web application, it's convenient to rely on a JS library to abstract all those "little" differences between browsers, and make your life easier. And more than that, in an application where we want to target different devices (tablets, phones, desktop...), the abstraction of specific events and features such as gestures, flicks, rotations... will be more than welcome!
+    </p>
+    <p>
+        For this application, probably most people would use <a href="http://jquery.com/">jQuery</a>, which is a really nice and strong framework. But I used <a href="http://yuilibrary.com">YUI</a> instead. I have a bunch of reasons for this choice, but since is a bit beyond the scope of this tutorial, I will keep my thoughts for another article ;). I would say just FYI, if you love JS, 
+        you should check the <a href="http://developer.yahoo.com/cocktails/">Yahoo! Cocktails platform</a>, 
+        specifically <a href="http://developer.yahoo.com/cocktails/mojito/">Mojito</a>. 
+        Yes maybe I'm a little biased here, but I found them amazing! :)
+    </p>
+    <p>
+        One of the first things I did was to abstract the user-interaction/events no matter which device or platform. In order to do that I use a module in YUI called gestures:
+        <code class="brush:js">
+        _bind: function () {
+           this._cube.on('transitionEnd',this._endTransition,this);
+           //gestures abstract click/tap/touch
+           this._container.on('gesturemovestart',this._onTouchCube,{},this);
+           this._container.on('gesturemove',this._onMoveCube,{},this);
+           this._container.on('gesturemoveend',this._onEndCube,{},this);
+
+           //we use those to handle multitouch
+           this._container.on('gesturestart',this._multiTouchStart,this);
+           this._container.on('gesturechange',this._multiTouchMove,this);
+           this._container.on('gestureend',this._multiTouchEnd,this);
+
+           //this keeps our app maximizing the screen size
+           Y.one('body').on('gesturemovestart',this._checkScroll,{},this);
+        },
+        </code>
+    </p>
+
+    <p>
+        As you saw in some of the previous examples we track the user mouse/finger to move the cube:
+    </p>
+    <code class="brush:js">
+         _onMoveCube:function (evt) {
+            evt.halt();
+            var x = this._deltaX = ((evt.clientX - this._startX)/1.2),
+            y = this._deltaY = ((evt.clientY - this._startY)/1.2);
+
+            ...
+
+            this._cube.setStyle('webkitTransform','rotateX('+ y  + 'deg) rotateY(' + x + 'deg)');
+        },
+    </code>
+
+    <p>
+        The last important piece, is when we receive the "gestureend" we have to map how the user flicked or clicked on the screen, with what movement we should perform on the cube.
+        And the tricky part here, is that basically we have to move from a 2D space to a 3d space...
+      </p><p>
+        I'm not going to put the example code here because it takes too much lines (needs some refactoring),
+        but feel free to check out the function <strong>"<i> _onEndCube </i>"</strong> in the <a href="step3/index.html">#example3 </a>
+    </p>
+
+    <p>
+        And last but not least, I added bunch of little nice features to improve the user-experince, like using the <strong>accelerometer</strong> when the user is in portrait mode, or changing views regarding the <strong>orientation.</strong>
+    </p>
+
+    <h3>Done!</h3>
+    <p> 
+        I hope you enjoy the tutorial, and that you learn something new :) Feel free to <a href="//twitter.com/#!/diervo">twitt me</a> your opinions and thoughts! And don't forget to visit <a href="//feval.info">my page</a> to check other interesting projects! :)
+    </p>
+    <h3>Acknowledgment</h3>
+    <p>
+        I want to mention and give special thanks to Stephen(@hypernaut), which help me debugging some CSS issues, Andrea, Magda and Lu(@luciamarinof) for the grammatic revision of this article, and all other friends which helped me beta-testing the cube.
+    </p>
+
+</section>
+<footer>
+    <p><a href="//twitter.com/#!/diervo">@diervo</a></p>
+    <p><a href="//feval.info">www.feval.info</a></p>
+    <p>Diego Ferreiro Val</p>
+    </footer>
+<script type="text/javascript">
+    SyntaxHighlighter.config.tagName = 'code';
+    SyntaxHighlighter.defaults['class-name'] = 'src-code';
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+</body>
+
+</html>
