@@ -9,4 +9,4 @@ http://html5rubik.com
 Tutorial:
 http://html5rubik.com/tutorial
 
-Comments & Questions: [[@diervo] [https://twitter.com/#!/diervo]]
+Comments & Questions: [@diervo](https://twitter.com/#!/diervo)
