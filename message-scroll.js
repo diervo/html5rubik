@@ -21,6 +21,7 @@ YUI.add('message-scroll',function(Y){
         },
         bind: function(){
             this._src.on('webkitTransitionEnd',this._endTransition,this);
+            this._src.on('transitionend',this._endTransition,this);
             this._ul.on("flick", Y.bind(this.flickHandler, this), {
                 minDistance: 5,
                 minVelocity: 0.2,
@@ -28,7 +29,7 @@ YUI.add('message-scroll',function(Y){
             });
         },
         checkSupport: function (){
-            var notSupported = (Y.UA.gecko || Y.UA.opera || Y.UA.ie);
+            var notSupported = (Y.UA.opera || Y.UA.ie);
             if(notSupported){
                 var tmpl = '<hgroup>' +
                 '<h1>Ups!, Browser not supported yet!</h1>' +

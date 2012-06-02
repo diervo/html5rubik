@@ -6,9 +6,11 @@
 #cube-viewport{
     -webkit-perspective: 800px;
     -moz-perspective: 800px;
+    -o-perspective: 800px;
     
     -webkit-perspective-origin: 50% 200px;
     -moz-perspective-origin: 50% 200px;
+    -o-perspective-origin: 800px;
 }
 
 #cube{
@@ -47,41 +49,102 @@
 
 /* CUBIE COLORS*/
 #cube .cubie > div.yellow {
-    background: -webkit-gradient(linear, left top, left bottom, 
-                                color-stop(0%,yellow), color-stop(70%,#ffff1a), 
-                                color-stop(90%,#ffff33), color-stop(100%,#ffff4d));
-}
-#cube .cubie > div.red {
-    background: -webkit-gradient(linear, left top, left bottom, 
-                    color-stop(0%,#f00), color-stop(70%,#ff1a1a), color-stop(90%,#ff3333), 
-                    color-stop(100%,#ff4d4d));
-}
-#cube .cubie > div.yellow {
-    background: -webkit-gradient(linear, left top, left bottom, 
-                                color-stop(0%,yellow), color-stop(70%,#E6E600),
-                                color-stop(90%,#CC0), color-stop(100%,#B3B300));
-}
-#cube .cubie > div.orange {
-    background: -webkit-gradient(linear, left top, left bottom, 
-                                color-stop(0%,#ffa500), color-stop(70%,#e69500), 
-                                color-stop(90%,#cc8400), color-stop(100%,#b37400));
-}
-#cube .cubie > div.green {
-    background: -webkit-gradient(linear, left top, left bottom, 
-                                color-stop(0%,#00ff00), color-stop(70%,#00e600), 
-                                color-stop(90%,#00cc00), color-stop(100%,#00b300));
-}
-#cube .cubie > div.blue {
-    background: -webkit-gradient(linear, left top, left bottom, 
-                                color-stop(0%,#4365a9), color-stop(70%,#4d71b9), 
-                                color-stop(90%,#607fc0), color-stop(100%,#728ec7));
-}
-#cube .cubie > div.white {
-    background: -webkit-gradient(linear, left top, left bottom, 
-                                color-stop(0%,#fff), color-stop(70%,#f2f2f2), 
-                                color-stop(90%,#e6e6e6), color-stop(100%,#d9d9d9));
+background-image: linear-gradient(top, rgb(255,232,54) 30%, rgb(214,214,34) 65%, rgb(184,184,24) 83%);
+background-image: -o-linear-gradient(top, rgb(255,232,54) 30%, rgb(214,214,34) 65%, rgb(184,184,24) 83%);
+background-image: -moz-linear-gradient(top, rgb(255,232,54) 30%, rgb(214,214,34) 65%, rgb(184,184,24) 83%);
+background-image: -webkit-linear-gradient(top, rgb(255,232,54) 30%, rgb(214,214,34) 65%, rgb(184,184,24) 83%);
+background-image: -ms-linear-gradient(top, rgb(255,232,54) 30%, rgb(214,214,34) 65%, rgb(184,184,24) 83%);
+
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.3, rgb(255,232,54)),
+    color-stop(0.65, rgb(214,214,34)),
+    color-stop(0.83, rgb(184,184,24))
+);
+
 }
 
+#cube .cubie > div.red {
+background-image: linear-gradient(top, rgb(255,56,56) 30%, rgb(212,36,36) 65%, rgb(161,27,27) 83%);
+background-image: -o-linear-gradient(top, rgb(255,56,56) 30%, rgb(212,36,36) 65%, rgb(161,27,27) 83%);
+background-image: -moz-linear-gradient(top, rgb(255,56,56) 30%, rgb(212,36,36) 65%, rgb(161,27,27) 83%);
+background-image: -webkit-linear-gradient(top, rgb(255,56,56) 30%, rgb(212,36,36) 65%, rgb(161,27,27) 83%);
+background-image: -ms-linear-gradient(top, rgb(255,56,56) 30%, rgb(212,36,36) 65%, rgb(161,27,27) 83%);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.3, rgb(255,56,56)),
+    color-stop(0.65, rgb(212,36,36)),
+    color-stop(0.83, rgb(161,27,27))
+);
+}
+#cube .cubie > div.orange {
+background-image: linear-gradient(top, rgb(255,159,56) 30%, rgb(212,141,36) 65%, rgb(161,111,26) 83%);
+background-image: -o-linear-gradient(top, rgb(255,159,56) 30%, rgb(212,141,36) 65%, rgb(161,111,26) 83%);
+background-image: -moz-linear-gradient(top, rgb(255,159,56) 30%, rgb(212,141,36) 65%, rgb(161,111,26) 83%);
+background-image: -webkit-linear-gradient(top, rgb(255,159,56) 30%, rgb(212,141,36) 65%, rgb(161,111,26) 83%);
+background-image: -ms-linear-gradient(top, rgb(255,159,56) 30%, rgb(212,141,36) 65%, rgb(161,111,26) 83%);
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.3, rgb(255,159,56)),
+    color-stop(0.65, rgb(212,141,36)),
+    color-stop(0.83, rgb(161,111,26))
+);
+}
+#cube .cubie > div.green {
+background-image: linear-gradient(top, rgb(16,122,9) 11%, rgb(71,204,41) 56%, rgb(87,255,61) 78%);
+background-image: -o-linear-gradient(top, rgb(16,122,9) 11%, rgb(71,204,41) 56%, rgb(87,255,61) 78%);
+background-image: -moz-linear-gradient(top, rgb(16,122,9) 11%, rgb(71,204,41) 56%, rgb(87,255,61) 78%);
+background-image: -webkit-linear-gradient(top, rgb(16,122,9) 11%, rgb(71,204,41) 56%, rgb(87,255,61) 78%);
+background-image: -ms-linear-gradient(top, rgb(16,122,9) 11%, rgb(71,204,41) 56%, rgb(87,255,61) 78%);
+
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.11, rgb(16,122,9)),
+    color-stop(0.56, rgb(71,204,41)),
+    color-stop(0.78, rgb(87,255,61))
+);
+
+}
+#cube .cubie > div.blue {
+background-image: linear-gradient(top, rgb(86,56,255) 30%, rgb(62,36,212) 65%, rgb(42,26,163) 83%);
+background-image: -o-linear-gradient(top, rgb(86,56,255) 30%, rgb(62,36,212) 65%, rgb(42,26,163) 83%);
+background-image: -moz-linear-gradient(top, rgb(86,56,255) 30%, rgb(62,36,212) 65%, rgb(42,26,163) 83%);
+background-image: -webkit-linear-gradient(top, rgb(86,56,255) 30%, rgb(62,36,212) 65%, rgb(42,26,163) 83%);
+background-image: -ms-linear-gradient(top, rgb(86,56,255) 30%, rgb(62,36,212) 65%, rgb(42,26,163) 83%);
+
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.3, rgb(86,56,255)),
+    color-stop(0.65, rgb(62,36,212)),
+    color-stop(0.83, rgb(42,26,163))
+);
+}
+#cube .cubie > div.white {
+    background-image: linear-gradient(top, rgb(143,143,143) 11%, rgb(255,255,255) 56%, rgb(255,255,255) 78%);
+background-image: -o-linear-gradient(top, rgb(143,143,143) 11%, rgb(255,255,255) 56%, rgb(255,255,255) 78%);
+background-image: -moz-linear-gradient(top, rgb(143,143,143) 11%, rgb(255,255,255) 56%, rgb(255,255,255) 78%);
+background-image: -webkit-linear-gradient(top, rgb(143,143,143) 11%, rgb(255,255,255) 56%, rgb(255,255,255) 78%);
+background-image: -ms-linear-gradient(top, rgb(143,143,143) 11%, rgb(255,255,255) 56%, rgb(255,255,255) 78%);
+
+background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.11, rgb(143,143,143)),
+    color-stop(0.56, rgb(255,255,255)),
+    color-stop(0.78, rgb(255,255,255))
+);
+}
 /* TEXT ROTATIONS */
 .textLeft{-webkit-transform: rotate(-90deg)}
 .textDown{-webkit-transform: rotate(-180deg)}
@@ -93,34 +156,49 @@
 #plane{
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 .moving {
-    -webkit-transition:all .2s linear;
-    -moz-transition:all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
 }
 
 /*PLANE M */
 .M-left {
     -webkit-transform-origin: 0px 200px;
     -webkit-transform:rotateX(90deg);
+    -moz-transform-origin: 0px 200px;
+    -moz-transform:rotateX(90deg);
 }
 .M-right {
     -webkit-transform-origin: 0px 200px;
-    -webkit-transform:rotateX(-90deg)
+    -webkit-transform:rotateX(-90deg);
+    -moz-transform-origin: 0px 200px;
+    -moz-transform:rotateX(-90deg);
 }
 
 /*PLANE E */
-.E-right {-webkit-transform:rotateY(90deg)}
-.E-left {-webkit-transform:rotateY(-90deg)}
+.E-right {
+    -webkit-transform:rotateY(90deg);
+    -moz-transform:rotateY(90deg)
+    }
+.E-left {
+    -webkit-transform:rotateY(-90deg);
+    -moz-transform:rotateY(-90deg)
+}
 
 /*PLANE S */
 .S-left {
     -webkit-transform-origin: 200px 200px;
     -webkit-transform:rotateZ(-90deg);
+    -moz-transform-origin: 200px 200px;
+    -moz-transform:rotateZ(-90deg);
 }
 .S-right {
     -webkit-transform-origin: 200px 200px;
     -webkit-transform:rotateZ(90deg);
+    -moz-transform-origin: 200px 200px;
+    -moz-transform:rotateZ(90deg);
 }
 
 /* CUBIES POSITIONS*/

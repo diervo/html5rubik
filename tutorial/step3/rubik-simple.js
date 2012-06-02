@@ -144,6 +144,8 @@ YUI.add('rubik-simple', function (Y) {
         * so it works with the mouse click or with tap/flick gestures.
         */
         _bind: function () {
+            //TODO: Fix YUI bug to abstract transitionEnd
+           this._cube.on('transitionend',this._endTransition,this);
            this._cube.on('webkitTransitionEnd',this._endTransition,this);
            
            this._container.on('gesturemovestart',this._onTouchCube,{preventDefault:true},this);
@@ -166,7 +168,7 @@ YUI.add('rubik-simple', function (Y) {
             this._setInitialColors();
             //TODO: set as a configurable ATTR on instanciation
             var pos = cfg && cfg.position || {x: 28, y: -28 };
-            this._cube.setStyle('webkitTransform','rotateX('+ pos.y + 'deg) rotateY(' +pos.x + 'deg)');
+            this._cube.setStyle('transform','rotateX('+ pos.y + 'deg) rotateY(' +pos.x + 'deg)');
             this._cubeXY = pos;
             this._tempXY = pos;
         },
@@ -213,7 +215,7 @@ YUI.add('rubik-simple', function (Y) {
             if (this._gesture){
                 this._tempXY = {x: x, y:y};
                 this._moved = true;
-                this._cube.setStyle('webkitTransform','rotateX('+ y  + 'deg) rotateY(' + x + 'deg)');
+                this._cube.setStyle('transform','rotateX('+ y  + 'deg) rotateY(' + x + 'deg)');
                 Y.one('#log > p').setContent("Moved:" + Math.floor(y) +' , ' + Math.floor(x) );
             }else{
                 this._moved = false;

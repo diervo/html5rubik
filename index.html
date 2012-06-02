@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name = "viewport" content = "user-scalable=no">
     <title>HTML5 Rubik's cube (CSS3 + JS)</title>
+    <meta property="og:title" content="3D HTML5 Rubik&#039;s Cube" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="http://html5rubik.com" />
+    <meta property="og:image" content="http://html5rubik.com/img/rotate.png" />
+    <meta property="og:site_name" content="3D HTML5 Rubik&#039;s cube" />
+    <meta property="fb:admins" content="1220708115" />
+
+    <meta name = "viewport" content = "user-scalable=no">
+    <meta name = "description" content = "Rubik's cube in HTML5 (CSS3 + JavaScript)">
+    <meta name = "keywords" content = "html5, CSS3, rubik's,cube, 3D, rubik, Javascript, YUI, Mojito">
+    <meta charset="UTF-8" />
+    
     <link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style.css"></link>  
     <link rel="stylesheet" href="rubik.css"></link>  
     <script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
     <script src="rubik.js"></script>
     <script src="message-scroll.js"></script>
-<script>
-YUI().use('node','rubik','message-scroll',function(Y){
-    var scrollpanel = new Y.MessageScroll();
-    var cube = window.cube = new Y.Rubik();
-    cube.run();    
-});
-</script>
 </head>
 <body>
 <header>
@@ -29,15 +33,14 @@ YUI().use('node','rubik','message-scroll',function(Y){
 
 <section id="log">
     <div class= "twitter">
-    <a  href="https://twitter.com/share" 
-        class="twitter-share-button" 
-        data-url="http://html5rubik.com" data-size="small" data-hashtags="html5rubik">
-        Twitt!
-    </a>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://html5rubik.com" data-text="Rubik's cube in HTML5 (CSS3 and JavaScript) Check it out in your mobile/tablet!" data-lang="en" data-hashtags="html5rubik">Twittear</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
 
-<div class="facebook"><iframe  src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhtml5rubik.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+    </div>
+
+<div class="facebook">
+<iframe  src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhtml5rubik.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true">
+</iframe>
 </div>
 <a href="tutorial">
 <div class="html5">
@@ -45,7 +48,20 @@ YUI().use('node','rubik','message-scroll',function(Y){
 </div>
 </a>
 
+</section>
 
+<section id="ads">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5950464454835011";
+/* rubik-mainpage */
+google_ad_slot = "3487054699";
+google_ad_width = 320;
+google_ad_height = 50;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
 </section>
 
 <section id="tutorial">
@@ -243,16 +259,42 @@ YUI().use('node','rubik','message-scroll',function(Y){
     <section id="main">
         <div id="cube-controls">
             <ul>
-                <li class="undo"></li>
-                <li class="redo"></li>
-                <li class="solve"></li>
-                <li id="rotation" class="rotate"></li>
+                <li>
+                    <div class="undo"></div>
+                </li>
+                <li>
+                    <div class="redo"></div>
+                </li>
+                <li>
+                    <div  class="solve"></div>
+                </li>
+                <li id="rotation">
+                    <div class="rotate"></div>
+                </li>
             </ul>
         </div>   
     </section>
 </aside>
 </section>
+<script>
+YUI().use('node','rubik','message-scroll',function(Y){
+    var scrollpanel = new Y.MessageScroll();
+    var cube = window.cube = new Y.Rubik();
+    cube.run();    
+});
+</script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32149285-1']);
+  _gaq.push(['_trackPageview']);
 
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </body>
 
 </html>

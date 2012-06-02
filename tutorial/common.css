@@ -2,10 +2,11 @@ body {
 	max-width: 60em;
 	padding: 1em;
 	margin: auto;
-    background-image: url(http://subtlepatterns.com/patterns/grunge_wall.png);
+    background-image: url("//subtlepatterns.com/patterns/grunge_wall.png");
 	font: 100%/1.5;
 	font-family: Georgia;
 	text-shadow: 0 1px white;
+    position:relative;
 }
 
 a{
@@ -43,7 +44,7 @@ li{
 }
 
 header h1{
-    font-size: 500%;
+    font-size: 450%;
     font-family: 'Luckiest Guy', cursive;
     padding: 0;
     margin: 0;
@@ -83,7 +84,7 @@ section p{
 
 #log{
     position: absolute;
-    top: 0px;
+    top: -5px;
     width:220px;
     height:60px;
     right:34px;
@@ -137,3 +138,22 @@ background: url("../img/h5.png") center 20% no-repeat,#fff;
     display:table-cell;
     color:black;
 }
+#ads{
+     position: absolute;
+    top: 10px;
+    width:330px;
+    height:55px;
+    right:284px;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 5px;
+    background: rgba(0, 0, 0, 0.2);
+    z-index:5000; 
+    line-height: 15px;
+    font-size: 20px;
+    text-align: center;
+    padding-top:5px;
+}
+
+
+
+
