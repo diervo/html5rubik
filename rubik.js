@@ -461,11 +461,24 @@ YUI.add('rubik', function (Y) {
                 this._queue.add(m);
             }
             var plane = this._plane,
-                list = Y.all('.' + m.face + m.slice);
+                list = Y.all('.' + m.face + m.slice),
+                origin;
+
             this._movement = m;
             this._moving = true;
             this._attachToPlane(list);
-            plane.addClass('moving').addClass(m.slice +'-'+ m.rotate);
+
+            switch (m.slice) {
+                case 'M' : origin = '0 200px'; break;
+                case 'S'  : origin = '200px 200px'; break;
+                default : origin = '';
+            }
+
+            plane.setStyle('-webkit-transform-origin', origin); 
+            plane.get('offsetHeight');
+            plane.addClass('moving');
+            plane.addClass(m.slice +'-'+ m.rotate);
+            
         },
         _attachToPlane:function (list) {
             this._plane.setContent(list);
