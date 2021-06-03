@@ -82,82 +82,54 @@ section p{
 }
 
 
-#log{
+#log {
     position: absolute;
-    top: -5px;
-    width:220px;
-    height:60px;
-    right:34px;
-    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    top: 0px;
+    width: 220px;
+    height: 60px;
+    right: 34px;
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.2);
-    z-index:5000; 
+    z-index: 5000;
     line-height: 15px;
     font-size: 20px;
     text-align: right;
-}
-#log .twitter{
-    position:absolute;
-    left:8px;
-    top:6px;
-}
-#log .facebook{
-    position:absolute;
-    left:8px;
-    top:34px;
-}
-#log .html5{
-    position:absolute;
-    top:4px;
-    right:8px;
-    background: url("../img/h5.png") center 20% no-repeat,#ededed;
-    background-size:75%;
-    width:65px;
-    height:50px;
-    display:table;
-    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-    -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-    box-shadow:inset 0px 1px 0px 0px #ffffff;
-    border-radius:6px;
-    border-radius:6px;
-    border:1px solid #dfdfdf;
-    opacity:0.9;
-}
-#log a{
-    background:none;
-}
-
-#log .html5:hover{
-background: url("../img/h5.png") center 20% no-repeat,#fff;
-}
-
-#log .html5 span{
-    width:100%;
+  }
+  
+  #log a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+  }
+  #log a:hover {
+      background:rgba(0, 0, 0, 0.2);
+  }
+  
+  #log .html5 {
+    background: url("../img/h5.png") center 50% no-repeat, #ededed;
+    background-size: 60%;
+    width: 65px;
+    height: 55px;
+    display: table;
+    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    border-radius: 6px;
+    opacity: 0.9;
+  }
+  
+  
+  #log span {
+    flex: 1;
+    width: 100%;
     font-family: Arial, "MS Trebuchet", serif;
-    font-size:14px;
-    font-weight:bold;
-    vertical-align:bottom;
-    text-align:center;
-    display:table-cell;
-    color:black;
-}
-#ads{
-     position: absolute;
-    top: 10px;
-    width:330px;
-    height:55px;
-    right:284px;
-    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.2);
-    z-index:5000; 
-    line-height: 15px;
-    font-size: 20px;
+    background: none;
+    font-size: 1em;
+    font-weight: bold;
     text-align: center;
-    padding-top:5px;
-}
+  }
+  
 
 
 

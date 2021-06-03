@@ -49,61 +49,23 @@
             line-height:8px;
         }
     </style>
-    <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-32149285-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 </head>
 <body>
 <header>
     <hgroup>
         <h1>Rubik's</h1>
-        <h2><a href="http://www.rubiks.com">Rubik's Cube</a> &#174; used by permission of Seven Towns Limited.</h2>
+        <h2><a href="http://www.rubiks.com">Rubik's Cube</a> &#174; used by permission of Seven Towns Limited. | Published in 2012</h2>
     </hgroup>
-
-<section id="log">
-    <div class= "twitter">
-    <a href="https://twitter.com/share" 
-        class="twitter-share-button" data-url="http://html5rubik.com" 
-        data-text="Tutorial Rubik's cube in HTML5 (CSS3 and JavaScript) Check it out in your mobile/tablet!" 
-        data-lang="es" data-hashtags="html5rubik">Twittear</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
-
-<div class="facebook"><iframe  src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fhtml5rubik.com&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
-</div>
-<a href="/">
-<div class="html5">
-    <span>Rubik's</span>
-</div>
-</a>
-
-
-</section>
-
+    <section id="log">
+        <a href="/">
+        <div class="html5">
+        </div>
+        <span>Rubik's cube</span>
+        </a>
+        
+        </section>
 </header>
-<section id="ads">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-5950464454835011";
-/* rubik-mainpage */
-google_ad_slot = "3487054699";
-google_ad_width = 320;
-google_ad_height = 50;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-</section>
 
 <section id="tutorial">
     <h1>
@@ -393,11 +355,7 @@ Imaging that we want to do two rotations:  First rotate the left side (ML) clock
         As you may know, when you're writing a complex web application, it's convenient to rely on a JS library to abstract all those "little" differences between browsers, and make your life easier. And more than that, in an application where we want to target different devices (tablets, phones, desktop...), the abstraction of specific events and features such as gestures, flicks, rotations... will be more than welcome!
     </p>
     <p>
-        For this application, probably most people would use <a href="http://jquery.com/">jQuery</a>, which is a really nice and strong framework. But I used <a href="http://yuilibrary.com">YUI</a> instead. I have a bunch of reasons for this choice, but since is a bit beyond the scope of this tutorial, I will keep my thoughts for another article ;). I would say just FYI, if you love JS, 
-        you should check the <a href="http://developer.yahoo.com/cocktails/">Yahoo! Cocktails platform</a>, 
-        specifically <a href="http://developer.yahoo.com/cocktails/mojito/">Mojito</a>. 
-        Yes maybe I'm a little biased here, but I found them amazing! :)
-    </p>
+        For this application, I used <a href="http://yuilibrary.com">YUI</a>.</p>
     <p>
         One of the first things I did was to abstract the user-interaction/events no matter which device or platform. In order to do that I use a module in YUI called gestures:
         <code class="brush:js">
@@ -448,17 +406,16 @@ Imaging that we want to do two rotations:  First rotate the left side (ML) clock
 
     <h3>Done!</h3>
     <p> 
-        I hope you enjoy the tutorial, and that you learn something new :) Feel free to <a href="//twitter.com/#!/diervo">twitt me</a> your opinions and thoughts! And don't forget to visit <a href="//feval.info">my page</a> to check other interesting projects! :)
+        I hope you enjoy the tutorial, and that you learn something new!
     </p>
     <h3>Acknowledgment</h3>
     <p>
-        I want to mention and give special thanks to Stephen(@hypernaut), which help me debugging some CSS issues, Andrea, Magda and Lu(@luciamarinof) for the grammatic revision of this article, and all other friends which helped me beta-testing the cube.
+        I want to mention and give special thanks to Stephen(<a href="//twitter.com/#!/hypernaut">@hypernaut</a>), which help me debugging some CSS issues, Andrea, Magda and Lu(@luciamarinof) for the grammatic revision of this article, and all other friends which helped me beta-testing the cube.
     </p>
 
 </section>
 <footer>
     <p><a href="//twitter.com/#!/diervo">@diervo</a></p>
-    <p><a href="//feval.info">www.feval.info</a></p>
     <p>Diego Ferreiro Val</p>
     </footer>
 <script type="text/javascript">
